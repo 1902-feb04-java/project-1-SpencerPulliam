@@ -1,4 +1,4 @@
-package pulliam-p1;
+package pulliamP1;
 
 import static org.junit.Assert.assertTrue;
 
