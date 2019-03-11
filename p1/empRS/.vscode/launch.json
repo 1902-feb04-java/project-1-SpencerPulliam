@@ -1,0 +1,11 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - TestDAO",
+            "request": "launch",
+            "mainClass": "com.revature.DAO.TestDAO",
+            "projectName": "Recompense"
+        }
+    ]
+}

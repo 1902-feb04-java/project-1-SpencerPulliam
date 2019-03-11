@@ -1,0 +1,82 @@
+ <!DOCTYPE <!DOCTYPE html>
+ <html>
+   <head>
+	   <meta charset="utf-8">
+	   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+		 
+		 <title>My Profile</title>
+		 
+		 <meta name="viewport" content="width=device-width, initial-scale=1">
+		 
+		 <link rel="stylesheet" type="text/css" media="screen" 
+	   href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+	 </head>
+	 
+  <body>
+   
+    <div class="response-block">
+      <table class="table">
+			
+			  <thead>
+			    <tr>
+				    <th>Emp ID</th>
+				    <th>Name</th>
+				    <th>Role</th>
+				    <th>Supervisor</th>
+				    <th>Manager Status</th>
+		    </thead>
+			
+			  <tbody id="employee-table">
+		    </tbody>
+	    </table>
+    </div>
+  
+  <script>
+    
+		pullDown('current');
+    let table = document.getElementById("employee-table");
+    function pullDown(who) {
+        var xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = () => {
+        
+				if (xhr.readyState == 4) {
+          	
+						data = JSON.parse(xhr.response);
+          	console.log(data);
+          	let person;
+          	
+						if (who =='all'){
+  	        	for (let item of data) {
+  	        		person = html(item);
+  	        		table.insertAdjacentHTML('beforeend', person) 
+  	        	}
+      	  	}
+					  
+						else {
+      			person = html(data);
+      			table.insertAdjacentHTML('beforeend', person)
+      	    }
+        }
+      };
+      
+			xhr.open('POST','../EmployeeServlet', true);
+      xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded"); 
+      xhr.send("who="+who+"&crud=read"); 
+  }
+
+  let html = (item) => { 
+		let string = `
+			<tr>
+				<td style="text-align: center">${item.id}</td>
+				<td>${item.firstName} ${item.lastName}</td>
+				<td>${item.jobTitle}</td>
+				<td>${item.reportsTo}</td>
+				<td>${item.isManager}</td>
+			</tr>`;
+		return string;
+	}
+
+</script>
+  
+  </body>
+</html>

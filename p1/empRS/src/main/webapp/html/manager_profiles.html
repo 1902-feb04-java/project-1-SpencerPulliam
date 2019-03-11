@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  
+  <head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	
+	<title>View Employees</title>
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	
+	<link rel="stylesheet" type="text/css" media="screen" 
+    href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+	
+  </head>
+  
+
+<body>
+  <button style="margin-left: 550px" class="btn btn-info" id="populate_page">View All Employees</button> <br>
+
+  <div class="response-block">
+    <table class="table">
+	  <thead>
+	    <tr>
+		  <th>Emp ID</th>
+		  <th>Name</th>
+		  <th>Role</th>
+		  <th>Supervisor</th>
+		  <th>Manager Status</th>
+	    </tr>	
+       </thead>
+		
+	   <tbody id="employee-table">
+	   </tbody>
+
+	  </table>
+    </div>
+  
+    <script src="../js/employeeProfile.js?new"></script>
+  
+  </body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <title>Update My Profile</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <link rel="stylesheet" type="text/css" media="screen" 
+	   href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  </head>
+  
+  <style>
+      .updateForm {
+          text-align: center;     
+      }
+
+      h3 {
+          text-align: center;
+      }
+  </style>
+
+
+
+  <body>
+    
+    <h3> Update My Profile </h3>
+
+     <div class="updateForm">
+       <form method="POST" action="../employee_crud" id="update_employee">
+         <input type="text" id="empJobTitle" name="employee_job_title" placeholder="Role">          <br>
+         <input type="text" id="empFirstName" name="employee_first_name" placeholder="First Name">  <br>
+         <input type="text" id="empLastName" name="employee_last_name" placeholder="Last Name">     <br>
+         <input type="text" id="empManager" name="manager_id" placeholder="Manager's ID">           <br>
+      
+         <input type="hidden" name="crud" value="update">
+         <input type="submit" class="btn btn-info" id="submitButton" value="Submit">
+    
+        </form>
+     </div>
+
+  <script type="text/javascript">
+      
+      document.addEventListener('DOMContentLoaded', () => pullDown('current'));
+      
+      function pullDown(who) {
+          let xhr = new XMLHttpRequest();
+          
+          xhr.onreadystatechange = () => {
+          
+            if (xhr.readyState == 4) {
+        	
+              data = JSON.parse(xhr.response);
+        	  console.log(data);
+
+        	  document.getElementById("empJobTitle").value = data.jobTitle;
+        	  document.getElementById("empFirstName").value = data.firstName;
+        	  document.getElementById("empLastName").value = data.lastName;
+        	  document.getElementById("empManager").value = data.reportsTo;
+        	  document.getElementById("managerStatus").checked = data.isManager;
+            }
+         };
+
+        xhr.open('POST','../EmployeeServlet', true);
+        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded"); 
+        xhr.send("who="+who+"&crud=read"); 
+    }
+
+    </script>
+  </body>
+</html>

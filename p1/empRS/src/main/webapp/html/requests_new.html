@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <title>Create New Request</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <link rel="stylesheet" type="text/css" media="screen" 
+		 href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    
+
+  </head>
+
+  <style>
+    .cnrField {
+      text-align: center;;
+    }
+
+    h1 {
+      text-align: center;
+    }
+  </style>
+
+
+  <body>
+     
+    <h1>Create New Request</h1> <br>
+
+    <div class="cnrField">
+      <form method="POST" action="../reimbursement_crud" id="create_requests_form" enctype="multipart/form-data"> 
+        <input type="text" name="request_amount" placeholder="Amount Requested"> <br>
+        <input type="text" name="request_description" placeholder="description"> <br>
+        <input type="file" name="image">                                         <br>
+   	    <input type="hidden" name="crud" value="create">                         <br>
+        <input type="submit" class="btn btn-info" value="Submit">
+      </form>
+    </div>
+
+    <script src="/js/addRequests.js?new"></script>  
+  
+  </body>
+</html>
